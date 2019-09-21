@@ -5,6 +5,8 @@ sudo: required
 branches:
   only:
     - master
+env:
+  - TAG="$(git rev-parse --short HEAD)"
 notifications:
   email:
     - sumusb34@gmail.com
@@ -12,7 +14,6 @@ notifications:
   on_failure: always
 script:
   - ./gradlew booJar
-  - docker build -t iljun/travis-docker:${TRAVIS_COMMIT} .
-  - echo $TAG
+  - docker build -t iljun/travis-docker:${TAG} .
   - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-  - docker push iljun/travis-docker:${TRAVIS_COMMIT}
+  - docker push iljun/travis-docker:${TAG}
