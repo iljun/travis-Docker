@@ -13,5 +13,7 @@ notifications:
 script:
   - ./gradlew build
   - docker build .
+  - export TAG=git rev-parse --short HEAD
+  - echo $TAG
   - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-  - docker push iljun/travis-docker
+  - docker push iljun/travis-docker:$TAG
