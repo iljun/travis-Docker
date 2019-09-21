@@ -17,4 +17,4 @@ script:
   - docker build .
   - echo $TAG
   - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-  - docker push iljun/travis-docker:${TAG}
+  - docker push iljun/travis-docker:${TRAVIS_COMMIT}
