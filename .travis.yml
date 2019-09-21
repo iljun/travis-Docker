@@ -12,7 +12,7 @@ notifications:
   on_failure: always
 script:
   - ./gradlew booJar
-  - docker build -t travis-docker .
+  - docker build -t iljun/travis-docker:${TRAVIS_COMMIT} .
   - echo $TAG
   - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
   - docker push iljun/travis-docker:${TRAVIS_COMMIT}
