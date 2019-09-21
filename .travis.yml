@@ -10,10 +10,11 @@ notifications:
     - sumusb34@gmail.com
   on_success: always
   on_failure: always
+env:
+  - TAG="$(git rev-parse --short HEAD)"
 script:
   - ./gradlew booJar
   - docker build .
-  - export TAG="$(git rev-parse --short HEAD)"
   - echo $TAG
   - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-  - docker push iljun/travis-docker:"$TAG"
+  - docker push iljun/travis-docker:${TAG}
