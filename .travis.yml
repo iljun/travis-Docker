@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk:8u201
+  - openjdk8
 sudo: required
 branches:
   only:
