@@ -1,0 +1,17 @@
+language: java
+jdk:
+  - openjdk:8u201
+sudo: required
+branches:
+  only:
+    - master
+notifications:
+  email:
+    - sumusb34@gmail.com
+  on_success: always
+  on_failure: always
+script:
+  - ./gradlew build
+  - docker build .
+  - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+  - docker push iljun/travis-docker
