@@ -14,6 +14,9 @@ notifications:
   on_failure: always
 script:
   - ./gradlew booJar
-  - docker build -t iljun/travis-docker:${TAG} .
-  - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-  - docker push iljun/travis-docker:${TAG}
+  - docker build -t wepet-docker-registry/travis-docker:${TAG} .
+deploy:
+  provider: s3
+  access_key_id: ${S3_ACCESS_KEY}
+  secret_access_key: ${S3_SECRET}
+  bucket: "wepet-docker-registry"
