@@ -18,6 +18,6 @@ before_script:
   - sudo docker pull registry:latest
 script:
   - ./gradlew booJar
-  - docker build -t 989243724240.dkr.ecr.ap-northeast-2.amazonaws.com/travis-docker:${TAG} .
-  - eval $(aws ecr get-login --no-include-email)
+  - docker build -t 989243724240.dkr.ecr.ap-northeast-2.amazonaws.com/wepet:${TAG} .
+  - eval $(aws ecr get-login --no-include-email --region ap-northeast-2)
   - docker push 989243724240.dkr.ecr.ap-northeast-2.amazonaws.com/wepet:${TAG}
