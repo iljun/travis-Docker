@@ -15,6 +15,6 @@ public class TravisDockerApplication {
 
     @GetMapping("/")
     public String sample() {
-        return "travis && Docker";
+        return "travis && Docker 2";
     }
 }
